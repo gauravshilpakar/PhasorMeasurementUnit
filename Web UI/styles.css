@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto&display=swap');
+
+html {
+	font-family: 'Roboto', sans-serif;
+	background-color: white;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+}
+h1,
+h2 {
+	color: #cc0000;
+	margin: 0px;
+}
+div.button {
+	text-align: center;
+}
+div.one
+{
+	/* margin-left: 50%; */
+	float: left;
+}
+div.two
+{
+	float: right;
+}
+a {
+text-decoration: none;
+color: white;
+}
+a:hover {
+	color: red;
+	text-decoration: underline;
+}
+header {
+	background: black;
+	text-align: center;
+	margin: auto;
+	padding: 20px;
+}
+header nav div {
+	display: inline-block;
+	margin: 0px 20px 0px 20px;
+}
+section div {
+	text-align: justify;
+}
+div.one{
+	padding-left: 40px;
+}
+#spitdata{
+	position: absolute;
+	margin-left:50%; 
+	/* background: #cc0000; */
+}
+section div.logo {
+	background: url(images/TTU_DblT_DoEaCE_c4C.png);
+	background-size: 250px;
+	background-size: relative;
+	height: 130px;
+	text-indent: -999999999px;
+	background-repeat: no-repeat;
+	position: relative;
+	background-position-x: 50%;
+}
+section em,
+.main {
+	text-align: center;
+}
+ol {
+	text-align: center;
+	margin-left: -60px;
+}
+li {
+	display: inline-block;
+	list-style-type: none;
+	padding-left: 20px;
+}
+section.intro {
+	text-align: justify;
+	padding: 20px;
+}
+
+canvas { 
+	position: absolute; 
+	
+}
