@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sine Wave</title>
+    <script type="text/javascript">
+        function showAxes(ctx1, axes) {
+            var width = ctx1.canvas.width;
+            var height = ctx1.canvas.height;
+            var xMin = 0;
+
+            ctx1.beginPath();
+            ctx1.strokeStyle = "rgb(128,128,128)";
+
+            // X-Axis
+            ctx1.moveTo(xMin, height / 2);
+            ctx1.lineTo(width, height / 2);
+
+            // Y-Axis
+            ctx1.moveTo(width / 2, 0);
+            ctx1.lineTo(width / 2, height);
+            // Starting line
+            ctx1.moveTo(0, 0);
+            ctx1.lineTo(0, height);
+
+            ctx1.stroke();
+        }
+        function drawPoint(ctx1, y) {
+            var radius = 3;
+            ctx1.beginPath();
+            // Hold x constant at 4 so the point only moves up and down.
+            ctx1.arc(4, y, radius, 0, 2 * Math.PI, false);
+            ctx1.fillStyle = 'red';
+            ctx1.fill();
+            ctx1.lineWidth = 1;
+            ctx1.stroke();
+        }
+        function plotSine(ctx1, xOffset, yOffset) {
+            var width = ctx1.canvas.width;
+            var height = ctx1.canvas.height;
+            var scale = 20;
+            ctx1.beginPath();
+            ctx1.lineWidth = 2;
+            ctx1.strokeStyle = "rgb(66,44,255)";
+            // console.log("Drawing point...");
+            // drawPoint(ctx1, yOffset+step);
+
+            var x = 4;
+            var y = 0;
+            var amplitude = 40;
+            var frequency = 20;
+            //ctx1.moveTo(x, y);
+            ctx1.moveTo(x, 50);
+            while (x < width) {
+                y = height / 2 + amplitude * Math.sin((x + xOffset) / frequency);
+                ctx1.lineTo(x, y);
+                x++;
+                // console.log("x="+x+" y="+y);
+            }
+            ctx1.stroke();
+            ctx1.save();
+            console.log("Drawing point at y=" + y);
+            drawPoint(ctx1, y);
+            ctx1.stroke();
+            ctx1.restore();
+        }
+        function draw() {
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+            context.clearRect(0, 0, 500, 500);
+            showAxes(context);
+            context.save();
+
+            plotSine(context, step, 50);
+            context.restore();
+
+            step += 4;
+            window.requestAnimationFrame(draw);
+        }
+        function spirograph() {
+            var canvas2 = document.getElementById("canvas2");
+            var context = canvas2.getContext("2d");
+
+            showAxes(context);
+            context.save();
+            // var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            var step = 4;
+            for (var i = -4; i < canvas.height; i += step) {
+                // context.putImageData(imageData, 0, 0);
+                plotSine(context, i, 54 + i);
+            }
+        }
+        function init() {
+            window.requestAnimationFrame(draw);
+            spirograph();
+        }
+        var step = -4;
+    </script>
+</head>
+
+<body onload="init()">
+    <h3>Oscillating Sine Wave</h3>
+    <canvas id="canvas" width="500" height="100"></canvas>
+    <p />
+    <h3>Multiple Sine Waves</h3>
+    <canvas id="canvas2" width="500" height="100" />
+</body>
+
+</html>
